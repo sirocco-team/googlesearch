@@ -21,7 +21,12 @@ from googlesearch.exceptions import GoogleAPIError
 
 import sys
 import json
-import urllib, requests
+import urllib
+if 1:
+    import requesocks as requests
+else:
+    import requests
+
 
 class GoogleSearch(object):
     
@@ -68,7 +73,7 @@ class GoogleSearch(object):
                     response_dict = json.loads(search_response.text)
                     results = response_dict['responseData']
                 except ValueError, KeyError:
-                    msg = 'HTTP %s\n%s' % (search_response.status_code,
+                    msg = u'HTTP %s\n%s' % (search_response.status_code,
                                            search_response.text)
                     raise GoogleAPIError(msg)
 

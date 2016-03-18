@@ -5,6 +5,7 @@ GoogleSearch is a Python 2 library for searching the web, using
 Google's Custom Search JSON/Atom API. It provides a simple
 python API for this task, as a wrapper around Google's.
 
+https://github.com/Anorov/PySocks
 
 ```python
 >>> from googlesearch import GoogleSearch
