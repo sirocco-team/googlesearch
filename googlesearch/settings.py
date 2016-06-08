@@ -1,34 +1,11 @@
-GOOGLE_API_URL_TEMPLATE = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s'
+GOOGLE_API_URL_TEMPLATE = \
+    'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s'
 
-PROXY_LIST = ['socks5://localhost:9050',
-              'socks5://localhost:9051',
-              'socks5://localhost:9052',
-              'socks5://localhost:9053',
-              'socks5://localhost:9054',
-              'socks5://localhost:9055',
-              'socks5://localhost:9056',
-              'socks5://localhost:9057',
-              'socks5://localhost:9058',
-              'socks5://localhost:9059',
-              'socks5://localhost:9060',
-              'socks5://localhost:9061',
-              'socks5://localhost:9062',
-              'socks5://localhost:9063',
-              'socks5://localhost:9064',
-              'socks5://localhost:9065',
-              'socks5://localhost:9066',
-              'socks5://localhost:9067',
-              'socks5://localhost:9068',
-              'socks5://localhost:9069',
-              'socks5://localhost:9070',
-              'socks5://localhost:9071',
-              'socks5://localhost:9072',
-              'socks5://localhost:9073',
-              'socks5://localhost:9074',
-              'socks5://localhost:9075',
-              'socks5://localhost:9076',
-              'socks5://localhost:9077',
-              'socks5://localhost:9078',
-              'socks5://localhost:9079',
-              'socks5://localhost:9080',
-              ]
+
+PROXY_LIST_TEMPLATE = 'socks5://{host}:{port}'
+BASE_SOCKS_PORT = os.getenv('BASE_SOCKS_PORT', '9050')
+SOCKS_PORT_COUNT = int(os.getenv('SOCKS_PORT_COUNT', '50'))
+TOR_HOST = os.getenv('TOR_HOST', 'tornet')
+
+PROXY_LIST = [PROXY_LIST_TEMPLATE.format(host=TOR_HOST, port=p) for p in
+              range(BASE_SOCKS_PORT, BASE_SOCKS_PORT + SOCKS_PORT_COUNT)]

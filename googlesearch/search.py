@@ -15,6 +15,8 @@ unescapedUrl
 url
 visibleUrl
 
+Extended for proxies. Needs a cleanup!
+
 """
 import googlesearch.settings as settings
 from googlesearch.exceptions import GoogleAPIError
@@ -41,7 +43,7 @@ class GoogleSearch(object):
         self.verbose = verbose
         if use_proxy and not settings.PROXY_LIST:
             msg = ("If you want to use proxies, you need to define a "
-                   "non-empty PROXT_LIST in googlesearch_settings")
+                   "non-empty PROXY_LIST in googlesearch_settings")
             raise ValueError(msg)
         
     @property
@@ -82,8 +84,8 @@ class GoogleSearch(object):
                 if status == 403 and self.use_proxy:
                     self.switch_to_next_proxy()
                     tried_proxies += 1
-                    if tried_proxies >= len(settings.PROXY_LIST):
-                        msg = ('Tried all proxies but all received a 403 FORBIDDEN '
+                    if tried_proxies >= (len(settings.PROXY_LIST)/2+1):
+                        msg = ('Tried half the proxies but all received a 403 FORBIDDEN '
                                'response from the Google API. Either wait for a while '
                                'or add more proxies to the PROXY_LIST in settings')
                         raise GoogleAPIError(msg)
