@@ -1,3 +1,4 @@
+import os
 GOOGLE_API_URL_TEMPLATE = \
     'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&%s'
 
