@@ -1,0 +1,16 @@
+app:
+  build:
+    image: topiaruss/googlesearch
+#    path: .
+    dockerfile_path: Dockerfile
+  links:
+    - tornet
+  environment:
+    SOCKS_PORT_COUNT: 1
+
+tornet:
+  image: topiaruss/tornet:latest
+  environment:
+    SOCKS_PORT_COUNT: 1
+
+

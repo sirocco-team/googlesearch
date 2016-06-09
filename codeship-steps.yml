@@ -1,0 +1,4 @@
+- service: app
+  command: bash scripts/run_ci_tests.sh
+- service: app
+  command: bash scripts/run_devpi_upload.sh
